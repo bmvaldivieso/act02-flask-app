@@ -49,6 +49,14 @@ def obtener_datos_filtrados():
 
     # Filtro de IDs
     ids_validos = ("3", "4", "5", "7")
+    # Empezamos con la lista (datos), que es una lista de cadenas de texto que no contiene el encabezado.
+    # for linea in datos: esta parte recorre todas las líneas de datos. 
+    # linea.split("|"): esto lo que hace es separar el texto en partes usando como delimitador (|). Esto convierte la línea en una lista de la siguiente forma: ['3', 'Carlos', 'M', 'Loja']
+    # linea.split("|")[0]: ahora, esto en cambio hace que de la nueva lista se tome solo el primer elemento (ID).
+    # .startswith(ids_validos): por otro lado, esto verifica si la cadena empieza con uno de los valores dados (ids_validos es una tupla que tiene los valores: ("3", "4", "5", "7")).
+    # Lo anterior va a devolver True si el ID comienza con 3, 4, 5 o 7, y False si no.
+    # if linea.split("|")[0].startswith(ids_validos): el if que tenemos al inicio de esta parte filtra solo las líneas que cumplen la condición.
+    # Al final, todas las listas filtradas que pasaron el filtro se almacenan en personas_filtradas.
     personas_filtradas = [linea.split("|") for linea in datos if linea.split("|")[0].startswith(ids_validos)]
 
     return encabezado, personas_filtradas
